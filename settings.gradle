@@ -8,3 +8,6 @@
  */
 
 rootProject.name = 'yarnmappings'
+
+def yarn = new File(rootDir, 'yarn/')
+include rootDir.toPath().relativize(yarn.toPath()).toFile().path
