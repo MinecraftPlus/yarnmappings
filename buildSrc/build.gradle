@@ -1,0 +1,9 @@
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url = 'https://maven.minecraftplus.org/'}
+}
+
+dependencies {
+    implementation 'org.minecraftplus:srgutils:0.4.32'
+}
