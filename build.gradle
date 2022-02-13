@@ -9,6 +9,8 @@ plugins {
 }
 
 import org.minecraftplus.gradle.tasks.mapping.ConvertMappings
+import java.nio.file.Files
+import java.nio.file.StandardCopyOption
 
 repositories {
     maven { url = 'https://maven.minecraftplus.org/' }
@@ -28,4 +30,8 @@ task convertMappings (type: ConvertMappings) {
     intermediary = project(":yarn").tasks.getByName("downloadIntermediary").dest
     tiny =  project(":yarn").tasks.getByName("buildYarnTiny").v2Output
     output = file('mappings/' + version + '-v2.tiny')
+
+    doLast {
+        Files.copy(output.toPath(), file('mappings/latest-v2.tiny').toPath(), StandardCopyOption.REPLACE_EXISTING)
+    }
 }
